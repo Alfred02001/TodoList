@@ -1,0 +1,44 @@
+<h2 class="title">Editar Tarea</h2>
+
+<div mat-dialog-content>
+
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+
+        <div class="field">
+            <div class="control">
+                <input 
+                type="text" 
+                class="input" 
+                [ngModel]="todo.text" 
+                #todoTextField="ngModel"
+                name="text" 
+                required
+                minlength="2"
+                placeholder="Agregue texto para su nueva tarea...">
+            </div>
+
+            <div *ngIf="todoTextField.invalid">
+                <p class="help is-danger" *ngIf="todoTextField.errors">Porfavor ingrese texto en la tarea</p>
+                <p class="help is-danger" *ngIf="todoTextField.errors">Todo el texto debe tener al menos 2 caracteres</p>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-grouped-right">
+            <div class="control">
+                <button type="button" class="button is-light" (click)="close()">Cancelar</button>
+            </div>
+
+            <div class="control">
+                <button type="submit" class="button alt-gradient-button">
+                    <i class="material-icons">save</i>
+                    Guardar
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
